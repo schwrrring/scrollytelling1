@@ -17,45 +17,6 @@ var xScale = d3.scaleBand()
 var yScale = d3.scaleLinear()
     .domain([0, 100])
     .range([height, 0])
-
-svg.selectAll('.bar')
-    .data([{'y': 10, 'x': 'a'}, {'x': 'b', 'y': 20}, {'x': 'c', 'y': 30}])
-    .enter()
-    .append('rect')
-    .attr('x', function (d) {
-        return xScale(d.x)
-    })
-    .attr('width', xScale.bandwidth())
-    .attr('y', function (d) {
-        return yScale(d.y)
-    })
-    .attr('height', function (d) {
-        return height - yScale(d.y)
-    })
-    .attr('fill', 'lightblue')
-    .attr('stroke', 'lightgreen')
-
-// draw xAxis
-
-var xAxis = d3.axisBottom(xScale)
-    .ticks(5)
-    .tickSize(10)
-    .tickPadding(5)
-svg.append('g')
-    .attr('transform', 'translate( 0,' + height + ')')
-    .call(xAxis)
-
-// draw yAxis
-
-var yAxis = d3.axisLeft(yScale)
-    .ticks(10)
-    .tickSize(10)
-    .tickPadding(10)
-svg.append('g')
-    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')')
-    .call(yAxis)
-
-
 function responsivefy(svg) {
     // get container + svg aspect ratio
     var container = d3.select(svg.node().parentNode),
@@ -82,6 +43,50 @@ function responsivefy(svg) {
         svg.attr("height", Math.round(targetWidth / aspect));
     }
 }
+function update(data) {
+    var bars = svg.selectAll('.bar')
+        .data(data)
+
+    bars.enter()
+        .append('rect')
+        .attr('fill', 'lightblue')
+        .attr('class', 'bar')
+        .merge(bars)
+        .attr('fill', 'pink')
+        .attr('x', function (d) {
+            return xScale(d.x)
+        })
+        .attr('width', xScale.bandwidth())
+        .attr('y', function (d) {
+            return yScale(d.y)
+        })
+        .attr('height', function (d) {
+            return height - yScale(d.y)
+        })
+
+    bars.exit().remove();
+// draw xAxis
+
+    var xAxis = d3.axisBottom(xScale)
+        .ticks(5)
+        .tickSize(10)
+        .tickPadding(5)
+    svg.append('g')
+        .attr('transform', 'translate( 0,' + height + ')')
+        .call(xAxis)
+
+// draw yAxis
+
+    var yAxis = d3.axisLeft(yScale)
+        .ticks(10)
+        .tickSize(10)
+        .tickPadding(10)
+    svg.append('g')
+        .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')')
+        .call(yAxis)
+}
+
+
 
 d3.graphScroll()
 
@@ -90,32 +95,106 @@ d3.graphScroll()
     .sections(d3.selectAll('.left1 > p'))
     .on('active', function (i) {
         console.log(i + 'th section active');
-        animations[i]();
+        animations[i](dataSteps[i]);
 
     })
     .offset(300)
 
 var lastScrolled = 0;
+var dataSteps = [
+    [{'y': 20, 'x': 'a'}, {'x': 'b', 'y': 20}, {'x': 'c', 'y': 30}],
+    [{'x': 'b', 'y': 30}, {'x': 'c', 'y': 20}],
+    [{'y': 30, 'x': 'a'}, {'x': 'b', 'y': 20}, {'x': 'c', 'y': 30}],
+    [{'y': 30, 'x': 'a'}, {'x': 'b', 'y': 30}],
+    [{'x': 'b', 'y': 30}, {'x': 'c', 'y': 30}],
+];
+
 var animations = [
-    function () {
-        if(lastScrolled == 0) {
-            console.log("hallo");
-        }
-        else if(lastScrolled == 2){
-            console.log('the last thing you saw is 1')
+    function (data) {
+
+        if (lastScrolled == 0) {
+            console.log("hallo", data);
+            update(data);
+            console.log(lastScrolled, 'lastScrolled')
+            // var bars = d3.selectAll('.bar').data(data);
+            // // .call(function(){console.log('kommt an')})
+            // bars.exit().remove();
+            // bars.enter().append('rect')
+            //     .merge(bars)
+            //     .attr('x', function (d) {
+            //         console.log('passiert hier was?')
+            //         return xScale(d.x)
+            //     })
+            //     .attr('width', xScale.bandwidth())
+            //     .attr('y', function (d) {
+            //         return yScale(d.y)
+            //     })
+            //     .attr('height', function (d) {
+            //         return height - yScale(d.y)
+            //     })
+            //     .attr('fill', 'red')
+            //     .attr('stroke', 'lightgreen')
+
 
         }
-        else{
+        else if (lastScrolled == 2) {
+            console.log('the last thing you saw is 1', data)
+            console.log(lastScrolled, 'lastScrolled')
+          update(data)
+            // var bars = d3.selectAll('.bar').data(data);
+            // // .call(function(){console.log('kommt an')})
+            // bars.exit().remove();
+            // bars.enter().append('rect')
+            //     .merge(bars)
+            //     .attr('x', function (d) {
+            //         console.log('passiert hier was?')
+            //         return xScale(d.x)
+            //     })
+            //     .attr('width', xScale.bandwidth())
+            //     .attr('y', function (d) {
+            //         return yScale(d.y)
+            //     })
+            //     .attr('height', function (d) {
+            //         return height - yScale(d.y)
+            //     })
+            //     .attr('fill', 'blue')
+            //     .attr('stroke', 'lightgreen')
+
+
+        }
+        else {
             console.log('you just entered the game');
         }
         lastScrolled = 1;
     },
-    function () {
-        if(lastScrolled == 1) {
-            console.log("you came frome 1");
+    function (data) {
+        if (lastScrolled == 1) {
+            console.log(data);
+            update(data);
+            console.log(lastScrolled, 'lastScrolled')
+            // console.log("you came frome 1", data);
+            // var bars = d3.selectAll('.bar').data(data);
+            // // .call(function(){console.log('kommt an')})
+            // bars.exit().remove();
+            // bars.enter().append('rect')
+            //     .merge(bars)
+            //     .attr('x', function (d) {
+            //         console.log('passiert hier was?')
+            //         return xScale(d.x)
+            //     })
+            //     .attr('width', xScale.bandwidth())
+            //     .attr('y', function (d) {
+            //         return yScale(d.y)
+            //     })
+            //     .attr('height', function (d) {
+            //         return height - yScale(d.y)
+            //     })
+            //     .attr('fill', 'red')
+            //     .attr('stroke', 'lightgreen')
+
 
         }
-        else if(lastScrolled == 3){
+        else if (lastScrolled == 3) {
             console.log('the last thing you saw is 2')
         }
         else {
@@ -123,8 +202,14 @@ var animations = [
         }
         lastScrolled = 2;
     },
-    function () {
-        console.log(2)
+    function (data) {
+        if (lastScrolled == 2) {
+          update(data)
+            console.log(lastScrolled, 'lastScrolled')
+            console.log(data)
+
+        }
+        lastScrolled = 3;
     },
     function () {
         console.log(3)
