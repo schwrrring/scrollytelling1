@@ -1,6 +1,9 @@
 var margin = {top: 10, right: 25, bottom: 35, left: 40}
 var width = 425 - margin.left - margin.right
 var height = 225 - margin.top - margin.bottom
+
+
+
 var svg = d3.select('.chart')
     .append('svg')
     .attr('width', width + margin.left + margin.right)
@@ -9,15 +12,10 @@ var svg = d3.select('.chart')
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-var xScale = d3.scaleBand()
-    .range([0, width])
-    .padding(0.1)
-    .domain(['a', 'b', 'c'])
 
-var yScale = d3.scaleLinear()
-    .domain([0, 100])
-    .range([height, 0])
+
 function responsivefy(svg) {
+
     // get container + svg aspect ratio
     var container = d3.select(svg.node().parentNode),
         width = parseInt(svg.style("width")),
@@ -43,8 +41,19 @@ function responsivefy(svg) {
         svg.attr("height", Math.round(targetWidth / aspect));
     }
 }
+console.log('updated')
+var xScale = d3.scaleBand()
+    .range([0, width])
+    .padding(0.1)
+    .domain(['a', 'b', 'c'])
+
+var yScale = d3.scaleLinear()
+    .domain([0, 100])
+    .range([height, 0])
 function update(data) {
-    var bars = svg.selectAll('.bar')
+    console.log('update is called');
+    var bars = svg
+        .selectAll('.bar')
         .data(data)
 
     bars.enter()
@@ -87,14 +96,12 @@ function update(data) {
 }
 
 
-
 d3.graphScroll()
 
     .graph(d3.selectAll('.chart'))
     .container(d3.selectAll('.left'))
     .sections(d3.selectAll('.left1 > p'))
     .on('active', function (i) {
-        console.log(i + 'th section active');
         animations[i](dataSteps[i]);
 
     })
@@ -108,6 +115,9 @@ var dataSteps = [
     [{'y': 30, 'x': 'a'}, {'x': 'b', 'y': 30}],
     [{'x': 'b', 'y': 30}, {'x': 'c', 'y': 30}],
 ];
+
+update(dataSteps[0])
+
 
 var animations = [
     function (data) {
@@ -140,7 +150,7 @@ var animations = [
         else if (lastScrolled == 2) {
             console.log('the last thing you saw is 1', data)
             console.log(lastScrolled, 'lastScrolled')
-          update(data)
+            update(data)
             // var bars = d3.selectAll('.bar').data(data);
             // // .call(function(){console.log('kommt an')})
             // bars.exit().remove();
@@ -204,7 +214,7 @@ var animations = [
     },
     function (data) {
         if (lastScrolled == 2) {
-          update(data)
+            update(data)
             console.log(lastScrolled, 'lastScrolled')
             console.log(data)
 

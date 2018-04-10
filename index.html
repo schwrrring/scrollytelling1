@@ -6,8 +6,274 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
+
+<style>
+
+
+    .head {
+        background-color: azure;
+        min-height: 300px;
+        clear: both;
+        text-align: center;
+    }
+
+    .left {
+        position: relative;
+        float: left;
+        width: 100%;
+        background-color: aqua;
+    }
+
+    .fullLeft {
+        min-height: 100px;
+        width: 100%;
+    }
+
+    .left1 {
+        box-sizing: border-box;
+        width: 20%;
+        background-color: red;
+        opacity: .1;
+        float: left;
+    }
+
+    .left1 p {
+        color: cadetblue;
+        min-height: 250px;
+    }
+
+    .footer {
+        background-color: burlywood;
+        clear: both;
+        min-height: 3000px;
+    }
+
+    .chart {
+        box-sizing: border-box;
+        margin-top: 50px;
+        width: 80%;
+        background-color: green;
+        float: right;
+        background: lightgray;
+        border: 1px solid black;
+        position: absolute;
+        position: sticky;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .icon.icon_arrow_down {
+        display: inline-block;
+        color: #aabed2;
+        font-size: 120px;
+        margin: 0;
+
+    }
+
+    /* ueberschreibung von ndr Styleguide-Klassen */
+    .mspecial {
+        width: 100%;
+
+    }
+
+    @media (max-width: 525px) {
+        .chart {
+            width: 100%;
+            margin-left: 0px;
+            float: none;
+        }
+
+        .left1 {
+            position: relative;
+            width: 100%;
+            /*margin: 0px auto;*/
+            /*padding-top: 400px;*/
+        }
+    }
+
+</style>
+
+<div class="container w100">
+    <section class="w100">
+        <div class="module w100  topteaser" data-color="col3">
+            <div class="modulepadding">
+                <div class="teaser" style="cursor: pointer;">
+                    <div class="teaserimage">
+                        <div class="image-container landscape">
+                            <img src="/plusminus190_v-contentxl.jpg"
+                                 data-type="contentklein,contentgross,contentxl,einspaltig,zweispaltig,vierspaltig,thumbnailgross,anderthalbspaltig"
+                                 alt="Eine Häuserzeile mit Balkonen © Kara Fotograf: Kara"
+                                 title="Eine Häuserzeile mit Balkonen" class="resize" style="width:100%;"
+                                 data-basename="/plusminus190_v-{imagetype}.jpg">
+                        </div>
+                        <div class="textpadding"><span class="icon icon_video"></span></div>
+                    </div>
+                    <div class="teaserpadding">
+                        <h2>
+                            <a href="/nachrichten/hamburg/Urteil-Wird-Wohnen-in-Hamburg-noch-teurer,grundsteuer112.html"
+                               title="Zum Artikel: Urteil: Wird Wohnen noch teurer?">
+                                Welche Strafe ist gerecht?
+                            </a>
+                        </h2>
+                        <div>
+                            <p>
+                                Das Urteil könnte mehr Geld in städtische Haushalte spülen - aber viele Menschen auch
+                                finanziell sehr belasten: Das Bundesverfassungsgericht verkündet heute seine
+                                Entscheidung zur Grundsteuer.
+                                <a title="Zum Artikel: Urteil: Wird Wohnen noch teurer?"
+                                   href="/nachrichten/hamburg/Urteil-Wird-Wohnen-in-Hamburg-noch-teurer,grundsteuer112.html"
+                                   class="cta ">mehr</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<article class="w66 nobox">
+    <div class="modulepadding copytext">
+        <p>Ziel unserer Untersuchung ist es, herauszufinden, wie Laien und Profis (RichterInnen und
+            StaatsanwältInnen) die Strafwürdigkeit bestimmter Verhaltensweisen einschätzen. Wir
+            bitten Sie, bei jedem der Fälle, die Ihnen gleich vorgestellt werden, aus einer Liste jeweils
+            diejenige Sanktion auszusuchen, die Sie selbst für angemessen halten. Bitte lassen Sie sich
+            dabei nur von Ihrer eigenen Bewertung leiten, nicht von der Einteilung oder Häufigkeit der
+            Auswahlmöglichkeiten. Darüber hinaus enthält die Befragung Fragen zu Ihrer Person und
+            Ihren Einstellungen zu Strafe und Kriminalpolitik im Allgemeinen. Anonymität: Wir sammeln
+            keine Daten, anhand derer Sie identifizierbar sind. Ihre Antworten sind also anonym. Die
+            Daten aus dieser Untersuchung werden nur aggregiert ausgewertet und nicht im Hinblick auf
+            einzelne TeilnehmerInnen.
+        </p>
+
+
+        <h2>
+            Der Fall:
+        </h2>
+
+        <p class="fall1">
+            Herr Riedel wurde von Polizeibeamten beobachtet, wie er im Park zwei anderen
+            Personen drei Gramm Marihuana verkaufte. Die Polizeibeamten nahmen alle drei
+            Personen fest. Herr Riedel ist 23 Jahre alt, deutscher Staatsangehöriger, ledig und
+            kinderlos. Er lebt bei seinen Eltern, macht Gelegenheitsjobs und hat ein monatliches
+            Nettoeinkommen von 600 €. Im Bundeszentralregister (Register, in das strafgerichtliche
+            Verurteilungen eingetragen werden) sind für Herrn Riedel mehrere Verurteilungen wegen
+            Drogendelikten verzeichnet.
+        </p>
+
+
+        <form method="GET" enctype="application/x-www-form-urlencoded" action="#">
+
+            <div class="code">
+
+                <div class="fieldsetwrapper form_element w100
+">
+                    <div class="modulepadding">
+
+                        <fieldset>
+                            <legend> Welche Sanktion / Beendigung des Verfahrens halten Sie für
+                                angemessen?
+                            </legend>
+                            <label for="einstellungOhneAuflagen" class="smallelement">
+                                <input type="checkbox" id="einstellungOhneAuflagen" name="sanktion"
+                                       value="einstellungOhneAuflagen"><span>Einstellung ohne Auflagen</span>
+                            </label>
+                            <label for="anordnungEinerTherapie" class="smallelement">
+                                <input type="checkbox" id="anordnungEinerTherapie" name="sanktion"
+                                       value="anordnungEinerTherapie"><span>Anordnung einer Therapie</span>
+                            </label>
+                            <label for="einstellungMitGeldauflage" class="smallelement">
+                                <input type="checkbox" id="einstellungMitGeldauflage" name="sanktion"
+                                       value="einstellungMitGeldauflage"><span>Einstellung mit Geldauflage</span>
+                            </label>
+                            <label for="GemeinnuetzigeArbeit" class="smallelement">
+                                <input type="checkbox" id="GemeinnuetzigeArbeit" name="topping"
+                                       value="GemeinnuetzigeArbeit"><span>Gemeinnützige Arbeit</span>
+                            </label>
+                            <label for="GeldstrafeMaxMonat" class="smallelement">
+                                <input type="checkbox" id="GeldstrafeMaxMonat" name="topping"
+                                       value="GeldstrafeMaxMonat"><span>Geldstrafe: nicht mehr als das Nettoeinkommen für einen Monat</span>
+                            </label>
+                            <label for="GeldstrafeMinMonat" class="smallelement">
+                                <input type="checkbox" id="GeldstrafeMinMonat" name="topping"
+                                       value="GeldstrafeMinMonat"><span>Geldstrafe: mehr als das Nettoeinkommen für einen Monat</span>
+                            </label>
+                            <label for="freiheitsstrafeMitBewaehrung" class="smallelement">
+                                <input type="checkbox" id="freiheitsstrafeMitBewaehrung" name="topping"
+                                       value="freiheitsstrafeMitBewaehrung"><span>Freiheitsstrafe mit Bewährung</span>
+                            </label>
+                            <label for="freiheitsstrafeMaxJahr" class="smallelement">
+                                <input type="checkbox" id="freiheitsstrafeMaxJahr" name="topping"
+                                       value="freiheitsstrafeMaxJahr"><span>Freiheitsstrafe ohne Bewährung: bis zu einem Jahr</span>
+                            </label>
+                            <label for="freiheitsstrafeMinJahr" class="smallelement">
+                                <input type="checkbox" id="freiheitsstrafeMinJahr" name="topping"
+                                       value="freiheitsstrafeMinJahr"><span>Freiheitsstrafe ohne Bewährung: über ein Jahr</span>
+                            </label>
+
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="fieldsetwrapper">
+                <fieldset>
+                    <legend>Spamschutz</legend>
+
+                    <div class="form_element w50">
+                        <div class="modulepadding">
+                            <img src="images/captchadummy.png" alt="" class="captcha">
+                            <a href="#" class="button iconbutton" title="Zeichenfolge als Audio abspielen"
+                               style="position: relative;"><span class="buttonshine"></span><span
+                                    class="icon icon_audio"></span></a>
+                            <a href="#" class="button iconbutton" title="neue Zeichenfolge laden"
+                               style="position: relative;"><span class="buttonshine"></span><span
+                                    class="icon icon_reload"></span></a>
+                        </div>
+                    </div>
+                    <div class="form_element w50">
+                        <div class="modulepadding">
+                            <label for="captcha"><span>Bitte die Zeichenfolge eingeben:</span></label><input type="text"
+                                                                                                             id="captcha"
+                                                                                                             name="captcha"
+                                                                                                             required="required">
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <div class="fieldsetwrapper">
+                <fieldset>
+                    <legend>Datenschutzbestimmungen</legend>
+                    <div class="form_element privacy">
+                        <input type="checkbox" name="privacy_policy" value="accept" class="check" id="privacy_policy">
+                        <label for="privacy_policy">Ich bin damit einverstanden, dass der NDR die enthaltenen Daten auf
+                            gesicherten Servern in Deutschland speichert. Der NDR wird die Daten vertraulich behandeln
+                            und
+                            nicht für Werbezwecke nutzen. Wird in diesem Formular nicht ausdrücklich darauf hingewiesen,
+                            werden die Daten nicht an Dritte weitergegeben. *</label>
+                    </div>
+
+                    <p class="mandatory_fields">*- Pflichtfelder. Diese Felder müssen ausgefüllt werden.</p>
+                </fieldset>
+            </div>
+
+
+            <div class="form_element">
+                <div class="modulepadding">
+                    <button>Submit order</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</article>
+
 <div class="head">
-    sdf
+    <span class="icon icon_arrow_down" aria-label=""></span>
 </div>
 <div class="left container1">
     <div class="chart">
@@ -25,12 +291,12 @@
         <p>5</p>
     </div>
 </div>
-<div class="right">
 
 </div>
 <div class="footer">
     sdf
 </div>
+
 </body>
 
 <script src="https://rawgit.com/1wheel/graph-scroll/gh-pages/d3v4%2Bjetpack.js"></script>
